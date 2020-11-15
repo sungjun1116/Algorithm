@@ -1,6 +1,10 @@
+# 플로위드 워셜 알고리즘으로 풀기(time : 25.6)
 '''
+import sys
+import time
+start_time = time.time()
+input = sys.stdin.readline
 INF = int(1e9) # 무한을 의미하는 값으로 10억을 설정
-
 # 노드의 개수 및 간선의 개수를 입력받기
 n, m = map(int, input().split())
 # 2차원 리스트(그래프 표현)를 만들고, 모든 값을 무한으로 초기화
@@ -34,11 +38,16 @@ if distance >= INF:
 # 도달할 수 있는 경우 거리를 출력
 else:
     print(distance)
+end_time = time.time() # 측정 종료
+print("time :", end_time - start_time) # 수행 시간 출력
 '''
 
-# 다익스트라 알고리즘으로 풀어보기
+
+# 다익스트라 알고리즘으로 풀어보기(time : 13.9)
 import heapq
 import sys
+import time
+start_time = time.time()
 input = sys.stdin.readline
 INF = int(1e9)  # 무한을 의미하는 값으로 10억을 설정
 
@@ -89,5 +98,9 @@ if result >= INF:
     print('-1')
 else:
     print(result)
+
+end_time = time.time() # 측정 종료
+print("time :", end_time - start_time) # 수행 시간 출력
+
 
 
