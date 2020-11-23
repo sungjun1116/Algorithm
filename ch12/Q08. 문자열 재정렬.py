@@ -3,7 +3,7 @@ letters = []
 digits = 0
 
 for data in array:
-    if data.isdigit():
+    if data.isdigit():  # isalpha()도 존재함!
         digits += int(data)
     else:
         letters.append(data)
