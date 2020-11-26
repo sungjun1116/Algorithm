@@ -35,7 +35,7 @@ array = list(map(int, input().split()))
 
 # 이진 탐색 수행 결과 출력
 index = binary_search(array, 0, n - 1)
-if result is None:
+if index is None:
     print('-1')
 else:
     print(index)
