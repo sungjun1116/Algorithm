@@ -17,6 +17,7 @@ for i in range(1, v + 1):
         graph[x].append(i)
         indegree[i] += 1
 
+
 # 위상 정렬 함수
 def topology_sort():
     result = copy.deepcopy(time)  # 알고리즘 수행 결과를 담을 리스트
