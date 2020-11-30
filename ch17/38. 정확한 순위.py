@@ -1,4 +1,4 @@
-INF = int(1e9) # 무한을 의미하는 값으로 10억을 설정
+INF = int(1e9)  # 무한을 의미하는 값으로 10억을 설정
 
 # 노드의 개수 및 간선의 개수를 입력받기
 n, m = map(int, input().split())
@@ -11,30 +11,28 @@ for a in range(1, n + 1):
         if a == b:
             graph[a][b] = 0
 
-# 각 간선에 대한 정보를 입력 받아, 그 값으로 초기화
 for _ in range(m):
-    # A에서 B로 가는 비용은 C라고 설정
+    #  성적 낮은 학생이 성적 높은 학생을 가리킴
     a, b = map(int, input().split())
-    # 시작 도시와 도착도시를 연결하는 노선이 이미 있는 경우에는 무시한다.
     graph[a][b] = 1
 
-# 점화식에 따라 플로이드 워셜 알고리즘을 수행
+# 다른 학생을 거쳐서 성적 높은 학생을 탐색할 수 있는 경우 고려
 for k in range(1, n + 1):
     for a in range(1, n + 1):
         for b in range(1, n + 1):
             graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
 
-# 수행된 결과를 출력
 result = 0
 for a in range(1, n + 1):
     count = 0
     for b in range(1, n + 1):
+        # 내 처음 풀이 -> if graph[a][b] == 1 or graph[b][a] == 1:
         if graph[a][b] != INF or graph[b][a] != INF:
             count += 1
-    if count == n:
-        result += 1
+        if count == n:
+            result += 1
+            break
+
 print(result)
-
-
 
 
