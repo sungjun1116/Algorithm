@@ -16,7 +16,7 @@ for a in range(1, n + 1):
 for _ in range(m):
     # A에서 B로 가는 비용은 C라고 설정
     a, b, c = map(int, input().split())
-    # 시작 도시와 도착도시를 연결하는 노선이 이미 있는 경우에는 무시한다.
+    # 시작 도시와 도착도시를 연결하는 노선이 이미 있는 경우에는 비용이 더 작은 간선을 넣는다.
     if min(graph[a][b], c) == c:
         graph[a][b] = c
 
@@ -29,9 +29,9 @@ for k in range(1, n + 1):
 # 수행된 결과를 출력
 for a in range(1, n + 1):
     for b in range(1, n + 1):
-        # 도달할 수 없는 경우, 무한(INFINITY)이라고 출력
-        if graph[a][b] == 1e9:
-            print("0", end=" ")
+        # 도달할 수 없는 경우, '0'을 출력
+        if graph[a][b] == INF:
+            print('0', end=" ")
         # 도달할 수 있는 경우 거리를 출력
         else:
             print(graph[a][b], end=" ")
