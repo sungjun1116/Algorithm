@@ -1,43 +1,33 @@
-'''그냥 틀린거같은 풀이
 data = list(map(int, input()))
+cnt = 0
+for i in range(1, len(data)):
+    #  첫 번째 원소와 다르거나 바뀔때
+    if data[0] != data[i] and data[i] != data[i - 1]:
+        cnt += 1
 
-#  전부 1로 바꾸는 경우
-count_0 = 0
-for i in range(len(data) - 1):
-    if data[i] == 1:
-        continue
-    else:
-        #  연속된 숫자의 마지막 까지 가기
-        if data[i] == data[i + 1]:
-            data[i] = 1
-            continue
-        # 연속된 덩어리를 바꾸고 count 증가
-        count_0 += 1
-#  전부 0으로 바꾸는 경우
-count_1 = 0
-for i in range(len(data) - 1):
-    if data[i] == 0:
-        continue
-    else:
-        if data[i] == data[i + 1]:
-            data[i] = 0
-            continue
-        count_1 += 1
+print(cnt)
 
 
-print(min(count_0, count_1))
+''' 구글링
+
+S = input()
+count = 0
+for i in range(len(S)-1):
+    if S[i] != S[i+1]:
+        count += 1
+print((count + 1) // 2)
+
+0 과 1 👉 0번, 길이 1
+
+01 👉 1번, 길이 2
+
+010 👉 1번, 길이 3
+
+0101 👉 2번, 길이 4
+
+01010 👉 2번, 길이 5
+
+010101 👉 3번, 길이 6
+
+0101010 👉3번, 길이 7
 '''
-
-data = list(map(int, input()))
-count_0 = 0
-count_1 = 0
-
-for i in range(len(data) - 1):
-    if data[i] != data[i + 1]:
-        # 다음수에서 1로 바뀌는 경우
-        if data[i + 1] == 1:
-            count_0 += 1
-        else:
-            count_1 = 1
-
-print(min(count_1, count_1))
