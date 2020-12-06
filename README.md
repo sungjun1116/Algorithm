@@ -1,3 +1,6 @@
-## 알고리즘 학습  [![Solved.ac프로필](http://mazassumnida.wtf/api/mini/generate_badge?boj=opr8632)](https://solved.ac/opr8632)
-[![Solved.ac
-프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=opr8632)](https://solved.ac/opr8632)
+## 알고리즘 학습
+* [이것이 취업을 위한 코딩 테스트다](https://github.com/sungjun1116/Algorithm/tree/master/python-for-coding-test)를 공부하며 작성한 예제
+* baekjoon
+
+
+[![Solved.ac프로필](http://mazassumnida.wtf/api/mini/generate_badge?boj=opr8632)](https://solved.ac/opr8632)
