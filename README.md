@@ -3,4 +3,4 @@
 * baekjoon
 
 
-[![Solved.ac프로필](http://mazassumnida.wtf/api/mini/generate_badge?boj=opr8632)](https://solved.ac/opr8632)
+[![Solved.ac/profile](http://mazassumnida.wtf/api/generate_badge?boj=opr8632)](https://solved.ac/opr8632)
