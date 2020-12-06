@@ -1,3 +1,3 @@
-## python-for-coding-test [![Solved.ac프로필](http://mazassumnida.wtf/api/mini/generate_badge?boj=sungjun1116)](https://solved.ac/sungjun1116)
+## python-for-coding-test [![Solved.ac프로필](http://mazassumnida.wtf/api/mini/generate_badge?boj=opr8632)](https://solved.ac/opr8632)
 [![Solved.ac
-프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=sungjun1116)](https://solved.ac/sungjun1116)
+프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=opr8632)](https://solved.ac/opr8632)
