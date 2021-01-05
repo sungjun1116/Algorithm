@@ -21,6 +21,6 @@ graph = []
 for i in range(n):
     graph.append(list(input()))
 
-max_size = max_square(n, m, n - 1)
+max_size = max_square(n, m, min(n,m))
 result = max_size * max_size
 print(result)
