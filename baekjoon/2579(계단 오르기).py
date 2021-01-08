@@ -1,21 +1,16 @@
 n = int(input())
 
-array = [0]
+data = [0]
 for i in range(n):
-    array.append(int(input()))
+    data.append(int(input()))
 
 dp = [0] * (n + 1)
-dp[1] = array[1]
-dp[2] = dp[1] + array[2]
+dp[1] = data[1]
+dp[2] = data[1] + data[2]
+dp[3] = data[1] + data[3]
 
-count = 2
-for i in range(3, n + 1):
-    if count == 2:
-        dp[i] = dp[i - 2] + array[i]
-        count = 0
-    else:
-        dp[i] = max(dp[i - 1], dp[i - 2] + array[i])
-        if dp[i] == dp[i - 1]:
-            count += 1
+for i in range(4, n + 1):
+    dp[i] = max(dp[i - 2] + data[i], dp[i - 3] + data[i - 1] + data[i])
 
-print(dp[n])
+for i in range(1, n + 1):
+    print(dp[i])
