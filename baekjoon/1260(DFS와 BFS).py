@@ -27,7 +27,7 @@ def bfs(graph, start, visited):
     # 큐 구현을 위해 deque 라이브러리 사용
     queue = deque([start])
     # 현재 노드를 방문 처리
-    visited[start] = True
+    visited[start] = False
     # 큐가 빌 때까지 반복
     while queue:
         # 큐에서 하나의 원소를 뽑아 출력
@@ -35,13 +35,14 @@ def bfs(graph, start, visited):
         print(v, end=' ')
         # 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
         for i in graph[v]:
-            if not visited[i]:
+            if visited[i]:
                 queue.append(i)
-                visited[i] = True
+                visited[i] = False
 
+visited = [False] * (n + 1)
 
-dfs(graph, start, [False] * (n + 1))
+dfs(graph, start, visited)
 print()
-bfs(graph, start, [False] * (n + 1))
+bfs(graph, start, visited)
 
 
