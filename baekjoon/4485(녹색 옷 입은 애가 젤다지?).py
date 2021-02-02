@@ -16,6 +16,8 @@ def dijkstra(start):
         if x == n - 1 and y == n - 1:
             print("Problem {0}: {1}".format(cnt, dist))
             return
+        if distance[x][y] < dist:
+            continue
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
