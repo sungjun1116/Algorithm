@@ -1,7 +1,7 @@
 venv/
 .idea/
 programmers/test.py
-backjoon/test.py
+baekjoon/test.py
 Soma/*
 
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm,python,windows
