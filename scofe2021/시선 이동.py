@@ -1,34 +1,56 @@
 from collections import deque
+import copy
+n, m = map(int, input().split())
+graph = []
+for i in range(m):
+    graph.append(list(input().strip()))
+newmap = []
+for i in range(m):
+    row = []
+    for j in range(n):
+        if graph[i][j] == "c" or graph[i][j] == ".":
+            row.append(1)
+        else:
+            row.append(0)
+    newmap.append(row)
 
-m, n = map(int, input().split())
-graph = [list(input()) for _ in range(n)]
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
 
-
-def bfs(x, y):
+def bfs(x, y,new):
+    global m
     q = deque()
-    q.append((x, y))
-    visited[x][y] = 1
+    q.append((x,y))
     while q:
         x, y = q.popleft()
         for i in range(4):
-            nx, ny = x + dx[i], y + dy[i]
-            if 0 <= nx < n and 0 <= ny < m:
-                if graph[nx][ny] == 'x' or graph[nx][ny] == int(1e9):
-                    graph[nx][ny] = int(1e9)
-                    continue
-                if graph[nx][ny] == 'c':
-                    continue
-                if visited[nx][ny] == 0:
-                    graph[nx][ny] = graph[x][y] + 1
-                    q.append((nx, ny))
-                    visited[nx][ny] = 1
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if nx < 0 or ny < 0 or nx >= m or ny >= n:
+                continue
+            if new[nx][ny] == 0:
+                continue
+            if new[nx][ny] == 1:
+                if i == 2 or i == 3:
+                    new[nx][ny] = new[x][y] + 1
+                else:
+                    new[nx][ny] = new[x][y]
+                q.append((nx,ny))
+    return new[m-1]
 
+minv = []
+for i in range(n):
+    if graph[0][i] == "c":
+        new = copy.deepcopy(newmap)
+        for el in bfs(0,i,new):
+           if el != 0:
+            minv.append(el)
 
-for i in range(m):
-    visited = [[0] * m for _ in range(n)]
-    if graph[0][i] == 'c':
-        graph[0][i] = 0
-        bfs(0, i)
+if not minv:
+    print(-1)
+else:
+    if min(minv)-1 == 0:
+        print(-1)
+    else:
+        print(min(minv)-1)

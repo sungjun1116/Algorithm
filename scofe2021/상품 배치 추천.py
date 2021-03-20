@@ -1,16 +1,31 @@
-from collections import deque
-
-dx = [0, 0, -1, 1]
-dy = [-1, 1, 0, 0]
 n = int(input())
-graph = [list(map(int, input())) for _ in range(n)]
-visited = [[0] * n for _ in range(n)]
+room = []
+for _ in range(n):
+    room.append(list(input().strip()))
 
-result = []
-cnt = 0
-for i in range(n):
-    for j in range(n):
-        if graph[i][j] == 1:
-            cnt += 1
-result.append(cnt)
-print(result)
+pos = [0 for _ in range(n + 1)]
+
+
+def check(k, i, j):
+    k += 1
+    for a in range(k):
+        for b in range(k):
+            if i + a >= n or j + b >= n:
+                return False
+            if int(room[i + a][j + b]) == 0:
+                return False
+
+    return True
+
+
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            if int(room[i][j]) == 1:
+                if check(k, i, j):
+                    pos[k + 1] += 1
+
+print("total:", sum(pos))
+for i in range(n + 1):
+    if pos[i] != 0:
+        print("size[" + str(i) + "]:", pos[i])
