@@ -40,8 +40,15 @@ tet7 = [[0, 1], [0, 1], [1, 1]]
 tet = [tet1, tet2, tet3, tet4, tet5, tet6, tet7]
 
 for t in tet:
-    for _ in range(4):
+    if t == tet1:
+        for _ in range(2):
+            check(t)
+            t = rotate(t)
+    elif t == tet2:
         check(t)
-        t = rotate(t)
+    else:
+        for _ in range(4):
+            check(t)
+            t = rotate(t)
 
 print(result)
