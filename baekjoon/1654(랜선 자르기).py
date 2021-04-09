@@ -5,8 +5,8 @@ input = sys.stdin.readline
 k, n = map(int, input().split())
 data = [int(input()) for _ in range(k)]
 
-start, end = 1, max(data)
-result = 0
+start, end = 0, max(data)
+result = 1
 while start <= end:
     mid = (start + end) // 2
     total = 0
