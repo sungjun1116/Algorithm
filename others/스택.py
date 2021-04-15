@@ -1,4 +1,4 @@
-class Stack:
+class stack:
     def __init__(self):
         self.stack_items = []
 
@@ -24,7 +24,7 @@ class Stack:
         self.stack_items.append(x)
 
 
-stack = Stack()
+stack = stack()
 stack.push(1)
 stack.push(2)
 stack.pop()
