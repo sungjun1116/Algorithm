@@ -9,7 +9,6 @@ def rotate_a_matrix_by_90_degree(paper):
       return tmp
     '''
 
-
 a = [
     [1, 2, 3, 4],
     [5, 6, 7, 8]
