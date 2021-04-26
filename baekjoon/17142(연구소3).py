@@ -3,77 +3,57 @@ from collections import deque
 from sys import stdin
 
 n, m = map(int, input().split())
-arr = [list(map(int, input().split())) for _ in range(n)]
 dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
 input = stdin.readline
 
-
-def block(array):
-    for i in range(n):
-        for j in range(n):
-            if array[i][j] == 1:
-                array[i][j] = -1
-
-
-def bfs(array):
-    while q:
-        x, y = q.popleft()
-        for i in range(4):
-            nx = dx[i] + x
-            ny = dy[i] + y
-            if nx < 0 or nx >= n or ny < 0 or ny >= n:
-                continue
-            if array[nx][ny] == -1:
-                continue
-            if not visited[nx][ny]:
-                array[nx][ny] = array[x][y] + 1
-                visited[nx][ny] = True
-                q.append((nx, ny))
-
-
-def time(array):
-    answer = 0
-    flag = True
-    for i in range(n):
-        for j in range(n):
-            if array[i][j] == -1:
-                continue
-            if (i, j) not in viruses:
-                if array[i][j] == 0:
-                    return -1
-                answer = max(answer, array[i][j])
-                flag = False
-
-    if flag:
-        return 0
-    else:
-        return answer
-
-
-# 바이러스의 위치 담기
+arr = []
 viruses = []
 for i in range(n):
+    temp = list(map(int, input().split()))
     for j in range(n):
-        if arr[i][j] == 2:
-            viruses.append((i, j))
+        if temp[j] == 2:
+            viruses.append((i, j, 0))
+    arr.append(temp)
 
-result = []
-for x in combinations(viruses, m):
-    x = list(x)
-    q = deque(x)
-    graph = [item[:] for item in arr]
-    visited = [[False] * n for _ in range(n)]
-    for virus in x:
-        a, b = virus[0], virus[1]
-        graph[a][b] = 0
-        visited[a][b] = True
 
-    block(graph)
-    bfs(graph)
-    result.append(time(graph))
+def check(array):
+    for i in range(n):
+        for j in range(n):
+            if array[i][j] == 0:
+                return -1
+    return 0
 
-if result.count(-1) == len(result):
-    print(-1)
-else:
-    result = list(filter(lambda item: item >= 0, result))
-    print(min(result))
+
+def bfs(start, array):
+    visited = [[0] * n for _ in range(n)]
+    array = [a[:] for a in array]
+    q = deque(start)
+
+    # 0이 2로바뀌는 마지막 순간만 확인하면 된다.
+    last = 0
+    while q:
+        x, y, cnt = q.popleft()
+        visited[x][y] = 1
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0 <= nx < n and 0 <= ny < n and not visited[nx][ny] and array[nx][ny] != 1:
+                visited[nx][ny] = 1
+                if array[nx][ny] == 0:
+                    array[nx][ny] = 2
+                    last = cnt + 1
+                q.append((nx, ny, cnt + 1))
+
+    if check(array) == 0:
+        return last
+    else:
+        return -1
+
+
+answer = int(1e9)
+for value in combinations(viruses, m):
+    result = bfs(list(value), arr)
+    if 0 < result < answer:
+        answer = result
+
+print(-1 if answer == int(1e9) else answer)
