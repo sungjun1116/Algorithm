@@ -53,7 +53,7 @@ def bfs(start, array):
 answer = int(1e9)
 for value in combinations(viruses, m):
     result = bfs(list(value), arr)
-    if 0 < result < answer:
+    if 0 <= result < answer:
         answer = result
 
 print(-1 if answer == int(1e9) else answer)
