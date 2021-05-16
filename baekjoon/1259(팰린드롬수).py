@@ -19,6 +19,7 @@ while True:
     else:
         print('no')
 
+
 # 2. 리스트 슬라이싱을 이용한 풀이
 while True:
     data = input()
